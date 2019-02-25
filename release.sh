@@ -10,7 +10,7 @@ cp -f ie10-viewport-bug-workaround.js "releases/$now/ie10-viewport-bug-workaroun
 cp -f narrow-jumbotron.css "releases/$now/narrow-jumbotron.css"
 
 # Compile JS using Google API Closure Compiler which also minifies JS code
-python compile_js.py "releases/$now/script.min.js"
+python -B compile_js.py "releases/$now/script.min.js"
 
 # Copy main HTML page
 cp -f index.html "releases/$now/index.html"

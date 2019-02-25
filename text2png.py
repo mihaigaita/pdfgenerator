@@ -62,6 +62,6 @@ def text2png(text, fullpath, color = "#000", bgcolor = "#FFF", fontfullpath = No
 if __name__ == "__main__":
     text2png(	'Telefon: 0728 811 446', 
     			'test.png', 
-    			fontfullpath = "/home/mihai/.fonts/Roboto-Bold.ttf",
+    			fontfullpath = "Roboto-Bold.ttf",
     			fontsize = 15,
     			leftpadding = 0)

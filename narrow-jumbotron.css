@@ -23,6 +23,10 @@ body {
 	width: 5rem;
 }
 
+.notice {
+    color: bisque;
+}
+
 /* Restrict form container size to be no more than 60emh */
 @media (min-width: 62rem) {
 	.container {

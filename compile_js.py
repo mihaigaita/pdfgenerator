@@ -23,7 +23,7 @@ def main():
     # Create telephone number
     text2png(   'Telefon: 0728 811 446', 
                 'telephone.png', 
-                fontfullpath = "/home/mihai/.fonts/Roboto-Bold.ttf",
+                fontfullpath = "Roboto-Bold.ttf",
                 fontsize = 30,
                 leftpadding = 0)
 
@@ -61,7 +61,7 @@ def main():
 
         # Always use the following value for the Content-type header.
         headers = { "Content-type": "application/x-www-form-urlencoded" }
-        conn = httplib.HTTPConnection('closure-compiler.appspot.com')
+        conn = httplib.HTTPSConnection('closure-compiler.appspot.com')
         conn.request('POST', '/compile', params, headers)
         response = conn.getresponse()
         data = response.read()
