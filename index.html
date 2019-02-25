@@ -1,0 +1,230 @@
+<!doctype html>
+
+<html>
+    <head>
+        <title>Generator PDF</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Bootstrap CDN link for CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+		<!-- Glyphicons replacement - they were removed in Bootstrap 4-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Custom styles for this template -->
+        <link href="narrow-jumbotron.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container mt-3">
+        	<div class="jumbotron">
+        		<div class="row text-xs-center mb-2">
+					<h1 class="text-white">Formular</h1>
+				</div>
+
+				<div class="row">
+		            <form class="form">
+			            <div class="col-lg-6">
+			                <!-- GUI inputs -->
+			                <!-- See https://v4-alpha.getbootstrap.com/components/ for examples and more details on Bootstrap widgets -->
+			                <div class="input-group">
+			                	<label for="input_name" class="sr-only">Nume</label>
+			                	<span class="input-group-addon label_style">Nume:</span>
+				                <input id="input_name" class="form-control text-md-right" placeholder="e.g. Bruce Wayne" />
+				                <label class="sr-only"/> <!-- this removes rounded corners on the right -->
+			                </div>
+			                <div class="input-group">
+			                	<label for="input_tel" class="sr-only">Telefon</label>
+			                	<span class="input-group-addon label_style">Telefon:</span>
+				                <input id="input_tel" class="form-control text-md-right" placeholder="e.g. 0720 000 000" />
+				                <label class="sr-only"/> <!-- this removes rounded corners on the right -->
+				            </div>  
+				            <div class="input-group">
+				            	<label for="input_tel_type" class="sr-only">Tip Telefon</label>
+				            	<span class="input-group-addon label_style">Tip Telefon:</span>
+				                <input id="input_tel_type" class="form-control text-md-right" placeholder="e.g. Samsung" />
+				                <label class="sr-only"/> <!-- this removes rounded corners on the right -->
+							</div>
+							<div class="input-group">
+				           		<label for="input_warranty" class="sr-only">Garanție</label>
+				           		<span class="input-group-addon label_style">Garanție:</span>
+				           		<input id="input_warranty" class="form-control  text-md-right" readonly/>
+								<div class="input-group-btn">
+									<button id="btn_warranty" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										DA
+									</button>
+									<ul id="list_warranty" class="dropdown-menu dropdown-menu-right">
+										<li><a class="dropdown-item">DA</a></li>
+										<li><a class="dropdown-item">NU</a></li>
+									</ul>
+								</div>
+								<label class="sr-only"/> <!-- this removes rounded corners on the right -->
+							</div>
+							<div class="input-group">
+			                	<label for="input_comments" class="sr-only">Comentarii</label>
+			                	<span class="input-group-addon label_style">Comentarii:</span>
+				                <input id="input_comments" class="form-control text-md-right" placeholder="e.g. zgarieturi ecran la primire"/>
+				                <label class="sr-only"/> <!-- this removes rounded corners on the right -->
+			                </div>
+							<div class="input-group">
+							    <label for="input_rec_date" class="sr-only">Data primirii</label>
+							    <span class="input-group-addon label_style">Data primirii:</span>
+			                	<input id="input_rec_date" class="form-control text-md-right" placeholder="e.g. 01 Ian 2000" aria-describedby="rec_date_aria"/>
+								<span class="input-group-btn">
+			        				<button id="btn_rec_date" onclick="insertCurrentDate('input_rec_date')" class="btn btn-primary" type="button">Azi</button>
+			     				</span>
+			     				<label class="sr-only"/> <!-- this removes rounded corners on the right -->
+							</div>
+							<div class="input-group">
+							    <label for="input_rel_date" class="sr-only">Data predării</label>
+							    <span class="input-group-addon label_style">Data predării:</span>
+			                	<input id="input_rel_date" class="form-control text-md-right" placeholder="e.g. 01 Ian 2000" aria-describedby="rel_date2_aria"/>
+								<span class="input-group-btn">
+			        				<button id="btn_rel_date" onclick="insertCurrentDate('input_rel_date')" class="btn btn-primary" type="button">Azi</button>
+			     				</span>
+			     				<label class="sr-only"/> <!-- this removes rounded corners on the right -->
+							</div>
+				            <div class="input-group">
+				           		<label for="input_defect" class="sr-only">Defect constatat</label>
+				           		<span class="input-group-addon label_style">Defect constatat:</span>
+				                <input id="input_defect" class="form-control text-md-right" placeholder="e.g. difuzor"/>
+				                <label class="sr-only"/> <!-- this removes rounded corners on the right -->
+							</div>
+			                <div class="input-group">
+							    <label for="input_est_price" class="sr-only">Preț estimat</label>
+							    <span class="input-group-addon label_style">Preț estimat:</span>
+			                	<input id="input_est_price" class="form-control text-md-right" placeholder="e.g. 50" type="text" pattern="[0-9]{1,5}" aria-describedby="est_price_aria"/>
+								<span class="input-group-addon label_style" id="est_price_aria">RON</span>
+								<label class="sr-only"/> <!-- this removes rounded corners on the right -->
+							</div>
+			            </div> <!-- col-lg-6 -->
+
+			            <div class="col-lg-6">
+			            	<div class="input-group">
+				                <label for="input_tel_model" class="sr-only">Model Telefon</label>
+				                <span class="input-group-addon label_style">Model Telefon:</span>
+				                <input id="input_tel_model" class="form-control text-md-right" placeholder="e.g. S8" />
+				                <label class="sr-only"/> <!-- this removes rounded corners on the right -->
+				            </div>
+			                <div class="input-group">
+				                <label for="input_tel_color" class="sr-only">Culoare Telefon</label>
+				                <span class="input-group-addon label_style">Culoare Telefon:</span>
+				                <input id="input_tel_color" class="form-control text-md-right" placeholder="e.g. negru" />
+				                <label class="sr-only"/> <!-- this removes rounded corners on the right -->
+				            </div>
+							<div id="input-group-imei" class="input-group has-feedback">
+				                <label for="input_imei" class="sr-only">IMEI</label>
+				                <span class="input-group-addon label_style">IMEI:</span>
+				                <input id="input_imei" class="form-control text-md-right" placeholder="e.g. 123456789012345" type="text" pattern="[0-9]{15,16}" aria-describedby="imei_aria" />
+							    <span class="input-group-addon label_style"><i id="status_icon" class="fa fa-fw"></i></span>
+							    <label class="sr-only"/> <!-- this removes rounded corners on the right -->
+			        		</div>
+			        		<div class="input-group">
+				                <label for="input_tel_code" class="sr-only">Cod Telefon</label>
+				                <span class="input-group-addon label_style">Cod Telefon:</span>
+				                <input id="input_tel_code" class="form-control text-md-right" placeholder="e.g 1526" />
+				                <label class="sr-only"/> <!-- this removes rounded corners on the right -->
+				            </div>
+							<div class="input-group">
+				           		<label for="input_charger" class="sr-only">Încărcător</label>
+				           		<span class="input-group-addon label_style">Încărcător:</span>
+				           		<div class="input-group-btn">
+									<button id="btn_charger" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										NU
+									</button>
+									<ul id="list_charger" class="dropdown-menu dropdown-menu-right">
+										<li><a class="dropdown-item">DA</a></li>
+										<li><a class="dropdown-item">NU</a></li>
+									</ul>
+								</div>
+								<span id="label_charger_serial" class="input-group-addon label_style">Seria:</span>
+								<input id="input_charger_serial" class="form-control text-md-right" placeholder="e.g 00000"/>
+								<label class="sr-only"/> <!-- this removes rounded corners on the right -->		
+							</div>
+				            <div class="input-group">
+				           		<label for="select_accum" class="sr-only">Acumulator</label>
+				           		<span class="input-group-addon label_style">Acumulator:</span>
+				           		<div class="input-group-btn">
+									<button id="btn_accum" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										NU
+									</button>
+									<ul id="list_accum" class="dropdown-menu dropdown-menu-right">
+										<li><a class="dropdown-item">DA</a></li>
+										<li><a class="dropdown-item">NU</a></li>
+									</ul>
+								</div>
+								<span id="label_accum_serial" class="input-group-addon label_style">Seria:</span>
+								<input id="input_accum_serial" class="form-control text-md-right" placeholder="e.g 00000"/>
+								<label class="sr-only"/> <!-- this removes rounded corners on the right -->		
+							</div>
+							<div class="input-group">
+							    <label for="input_fix_days" class="sr-only">Termen de reparare</label>
+							    <span class="input-group-addon label_style">Termen de reparare:</span>
+			                	<input id="input_fix_days" class="form-control text-md-right" placeholder="e.g. 25" type="text" pattern="[0-9]{1,2}" aria-describedby="fix_days_aria"/>
+								<span class="input-group-addon label_style" id="fix_days_aria">zile calendaristice</span>
+								<label class="sr-only"/> <!-- this removes rounded corners on the right -->
+							</div>
+				            <div class="input-group">
+				                <label for="input_relaced_parts" class="sr-only">Piese înlocuite</label>
+				               	<span class="input-group-addon label_style">Piese înlocuite:</span>
+				                <input id="input_relaced_parts" class="form-control text-md-right" placeholder="e.g. difuzor"/>
+				                <label class="sr-only"/> <!-- this removes rounded corners on the right -->
+				            </div>
+							<div class="input-group">
+							    <label for="input_final_price" class="sr-only">Preț final</label>
+							    <span class="input-group-addon label_style">Preț final:</span>
+			                	<input id="input_final_price" class="form-control text-md-right" placeholder="e.g. 55" type="text" pattern="[0-9]{1,4}" aria-describedby="final_price_aria" />
+								<span class="input-group-addon label_style" id="final_price_aria">RON</span>
+								<label class="sr-only"/> <!-- this removes rounded corners on the right -->
+							</div>
+			            </div> <!-- col-lg-6 -->
+
+						<div class="col-lg-12">
+							<!-- Main button which generates PDF -->
+			                <label class="sr-only">Buton Generează PDF</label>
+							<div class="input-group button-style">
+								<div class="input-group-btn">
+									<button type="button" id="gen_btn" class="btn btn-lg btn-primary"> Generează PDF </button>
+								</div>
+
+								<div class="input-group-btn">
+									<button type="button" id="print_btn" class="btn btn-lg btn-success"> Print </button>
+								</div>
+
+								<div class="input-group-btn">
+									<button type="button" id="del_btn" class="btn btn-lg btn-warning"> Șterge formular </button>
+								</div>
+							</div>
+						</div>
+		            </form>
+				</div>
+
+	            <div class="row text-xs-center mt-2">
+	            	<h7 class="text-white text-muted">
+	            		<a href="mailto:fronteer@gmail.com?subject=PDF%20Generator">&copy; Mihai Gaita 2017</a>
+	            	</h7>
+	            </div>
+            </div> <!-- jumbotron -->
+        </div> <!-- container -->
+
+        <!-- JavaScript external files -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- ========================= -->
+        <!-- JQuery CDN required for Bootstrap -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+    
+        <!-- Tether library CDN required for Bootstrap -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+
+         <!-- Bootsrap CDN for JS -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+
+        <!-- Bootstrap IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src='ie10-viewport-bug-workaround.js'></script>
+
+        <!-- JS PDF generator library and Roboto Font -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js' defer='true'></script> 
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js' defer='true'></script>
+
+        <!-- custom JS code, compiled using http://closure-compiler.appspot.com/home -->
+        <script src='script.js' defer='true'></script>
+    </body>
+</html>

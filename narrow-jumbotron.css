@@ -1,0 +1,80 @@
+body {
+	/* This image will be displayed fullscreen */
+	background:url('background.jpg') no-repeat center center;
+
+	/* Ensure the html element always takes up the full height of the browser window */
+	min-height:100%;
+}
+
+/* Set form background color and opacity */
+.jumbotron {
+	background-color: rgba(26, 26, 26, 0.8) !important;
+	color: inherit;
+	padding: 2rem  !important;
+}
+
+/* Limit size of main button and place it in center after the form */
+.button-style {
+	max-width: 20rem;
+	margin: 1rem auto;
+}
+
+#label_charger_serial, #label_accum_serial {
+	width: 5rem;
+}
+
+/* Restrict form container size to be no more than 60emh */
+@media (min-width: 62rem) {
+	.container {
+		max-width: 60rem;
+	}
+}
+
+@media (max-width: 61rem) {
+	.jumbotron {
+		min-width: 30rem;
+	}
+}
+
+/* Customize label style */
+.label_style{
+	color: #222;
+	font-weight: bold;
+	border: 1px solid #333;
+}
+
+/* Customize input and dropdown style */
+.dropdown-menu, input{
+    vertical-align: middle;
+    background: #333 !important;
+    border: 1px solid #333;
+    color: #ddd !important;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+.dropdown-menu:focus, input:focus{
+	background: #555 !important;
+    border: 1px solid #666 !important;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+}
+
+.dropdown-item:hover { opacity: 0.6; color: #222 !important; }
+
+/* Customize secondary buttons style */
+.dropdown-menu, button.btn {
+	border: 1px solid #555 !important;
+	width: 100%;
+    vertical-align: middle;
+    color: #fff !important;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+button.btn:hover { opacity: 0.6; color: #fff !important; }
+
+/* Placeholder Colors */
+.form-control::-webkit-input-placeholder { color: #555; }
+.form-control:-moz-placeholder { /* Firefox 18- */ 	color: #555; }
+.form-control::-moz-placeholder { /* Firefox 19+ */ color: #555; }
+.form-control:-ms-input-placeholder { color: #555; }
